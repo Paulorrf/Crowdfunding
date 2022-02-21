@@ -8,13 +8,37 @@ export const Container = styled.div`
   padding: 12px;
   margin-top: 16px;
   margin-bottom: 16px;
-  opacity: ${props => (props.isActiveModal ? "1" : "0.5")};
+  opacity: ${(props) => (props.isActiveModal ? "1" : "0.5")};
+
+  & {
+    @media (max-width: 800px) {
+      h2 {
+        font-size: 0.9rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
 `;
 
 export const ContainerLabelQnt = styled.div`
   width: 94%;
   display: flex;
   justify-content: space-between;
+
+  & {
+    @media (max-width: 800px) {
+      h2 {
+        font-size: 0.9rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
 `;
 
 export const LabelContainer = styled.div`
@@ -78,12 +102,10 @@ export const BtnContinue = styled.button`
 export const InputPledge = styled.input`
   border-radius: 24px;
   width: 100px;
-  //height: 100%;
-  border-color: ${({ theme: { colors } }) => colors.secondary};
   text-align: center;
   outline: none;
   border-style: solid;
-  //padding-left: 5px;
-  //padding: 10px;
   padding: 10px 0;
+  border-color: ${({ pledgeValueErr, theme }) =>
+    pledgeValueErr ? "red" : theme.colors.secondary};
 `;

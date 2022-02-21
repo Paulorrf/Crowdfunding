@@ -17,28 +17,66 @@ const ModalPledge = ({
   idFor,
   title,
   pledgeAmount = 0,
-  quantity,
   arrIsActive,
   setArrIsActive,
   value,
+  setShowModal,
+  monitorsQnt,
+  setMonitorsQnt,
+  setBacked,
+  setTotalBackers,
 }) => {
-  //Must add a new indice to const "arrIsActive" with false for each modal
+  //Must add a new indice to const "arrIsActive" with false for each new modal
   const [isActiveModal, setIsActiveModal] = useState(true);
   const [outOfStock, setOutOfStock] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [pledgeValue, setPledgeValue] = useState(0);
+  const [pledgeValueErr, setPledgeValueErr] = useState(false);
 
+  //Out of stock
   useEffect(() => {
-    if (quantity == 0 && isFree == false) {
+    if (monitorsQnt[value - 1] == 0 && isFree == false) {
       setOutOfStock(true);
       setIsActiveModal(false);
       setIsDisabled(true);
     }
-  }, [isFree, quantity]);
+  }, [isFree, monitorsQnt, value]);
 
   const handleClick = () => {
-    const newArr = arrIsActive.map(valor => (valor = false));
+    const newArr = arrIsActive.map((valor) => (valor = false));
     newArr[value] = true;
     setArrIsActive(newArr);
+  };
+
+  let btnHandle = (e) => {
+    e.preventDefault();
+
+    if (pledgeValueErr) return;
+
+    setBacked((prev) => prev + parseInt(pledgeValue));
+    setTotalBackers((prev) => prev + 1);
+
+    let newMonitor = monitorsQnt.map((monitor, index) => {
+      if (index == value - 1) {
+        return (monitor -= 1);
+      } else {
+        return monitor;
+      }
+    });
+
+    setMonitorsQnt(newMonitor);
+    setShowModal(false);
+  };
+
+  let handleChange = (value) => {
+    //verify if value is equal or higher of the required pledge amount and is only numbers
+    if (value < pledgeAmount || !value.match(/^[0-9]*$/)) {
+      setPledgeValueErr(true);
+      return;
+    } else {
+      setPledgeValueErr(false);
+      setPledgeValue(value);
+    }
   };
 
   return (
@@ -60,7 +98,7 @@ const ModalPledge = ({
                 </label>
                 {isFree ? null : <p>Pledge ${pledgeAmount} or more</p>}
               </LabelContainer>
-              <div>{isFree ? null : <p>{quantity} left</p>}</div>
+              <div>{isFree ? null : <p>{monitorsQnt[value - 1]} left</p>}</div>
             </ContainerLabelQnt>
           </div>
         ) : (
@@ -81,7 +119,7 @@ const ModalPledge = ({
                 </label>
                 {isFree ? null : <p>Pledge ${pledgeAmount} or more</p>}
               </LabelContainer>
-              <div>{isFree ? null : <p>{quantity} left</p>}</div>
+              <div>{isFree ? null : <p>{monitorsQnt[value - 1]} left</p>}</div>
             </ContainerLabelQnt>
           </div>
         )}
@@ -107,9 +145,14 @@ const ModalPledge = ({
                 >
                   $
                 </span>
-                <InputPledge type="text" />
+                <InputPledge
+                  type="text"
+                  maxLength="5"
+                  onChange={(e) => handleChange(e.target.value)}
+                  pledgeValueErr={pledgeValueErr}
+                />
               </div>
-              <BtnContinue>Continue</BtnContinue>
+              <BtnContinue onClick={(e) => btnHandle(e)}>Continue</BtnContinue>
             </div>
           </PledgeContainer>
         </div>

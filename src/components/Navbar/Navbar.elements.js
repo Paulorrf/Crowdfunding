@@ -21,13 +21,28 @@ export const Nav = styled.nav`
   padding: 2rem 0 1rem 0;
 `;
 
+export const NavLogo = styled.a`
+  width: 9rem;
+
+  @media (max-width: 900px) {
+    width: 7rem;
+  }
+
+  @media (max-width: 760px) {
+    width: 5rem;
+  }
+`;
+
 export const NavList = styled.ul`
   display: flex;
   justify-content: space-around;
-  width: 24%;
+  width: 40%;
+  //background-color: red;
 
   a {
     color: #fff;
+    font-size: 1rem;
+    padding: 1rem;
 
     > * {
       background-color: transparent;
@@ -35,6 +50,18 @@ export const NavList = styled.ul`
 
     :hover {
       color: ${({ theme: { colors } }) => colors.primary};
+    }
+  }
+
+  @media (max-width: 900px) {
+    a {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 760px) {
+    a {
+      font-size: 0.6rem;
     }
   }
 `;

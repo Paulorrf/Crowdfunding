@@ -11,13 +11,13 @@ import {
   BtnReward,
 } from "./Pledge.elements";
 
-const Pledge = ({ title, valor, text, amountLeft, setShowModal }) => {
+const Pledge = ({ title, valor, text, quantity, setShowModal, idx }) => {
   const [isActive, setIsActive] = useState();
   const [disabled, setDisabled] = useState(false);
   const [outStock, setOutStock] = useState();
 
   useEffect(() => {
-    if (amountLeft <= "0") {
+    if (quantity[idx] <= "0") {
       setIsActive(false);
       setDisabled(true);
       setOutStock(true);
@@ -25,7 +25,7 @@ const Pledge = ({ title, valor, text, amountLeft, setShowModal }) => {
       setIsActive(true);
       setOutStock(false);
     }
-  }, [amountLeft]);
+  }, [quantity, idx]);
 
   return (
     <Container isActive={isActive}>
@@ -37,12 +37,12 @@ const Pledge = ({ title, valor, text, amountLeft, setShowModal }) => {
         <AboutText>{text}</AboutText>
         <ContainerOptions>
           <P>
-            {amountLeft} <SpanLeft>left</SpanLeft>
+            {quantity[idx]} <SpanLeft>left</SpanLeft>
           </P>
           <BtnReward
             outStock={outStock}
             disabled={disabled}
-            onClick={() => setShowModal(prev => !prev)}
+            onClick={() => setShowModal((prev) => !prev)}
           >
             {disabled ? "Out of stock" : "Select Reward"}
           </BtnReward>

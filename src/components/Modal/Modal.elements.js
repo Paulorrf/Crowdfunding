@@ -21,6 +21,12 @@ export const OuterModal = styled.div`
   border-radius: 15px;
   padding: 6px 0px;
   background: #fff;
+
+  & {
+    @media (max-width: 800px) {
+      width: 500px;
+    }
+  }
 `;
 
 export const ModalWrapper = styled.div`
@@ -29,6 +35,12 @@ export const ModalWrapper = styled.div`
   z-index: 100;
   overflow-y: auto;
   overflow-x: hidden;
+
+  & {
+    @media (max-width: 800px) {
+      width: 500px;
+    }
+  }
 `;
 
 export const CloseBtn = styled(AiOutlineClose)`
@@ -59,5 +71,17 @@ export const InfoContainer = styled.div`
     font-size: 0.9rem;
     color: ${({ theme: { colors } }) => colors.text};
     padding-bottom: 16px;
+  }
+
+  & {
+    @media (max-width: 800px) {
+      h2 {
+        font-size: 0.9rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+    }
   }
 `;

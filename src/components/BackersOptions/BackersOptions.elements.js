@@ -10,6 +10,12 @@ export const BackersOpInnerContainer = styled.div`
   width: 90%;
   padding: 10px;
   margin: 0 auto;
+
+  & {
+    @media (max-width: 800px) {
+      font-size: 0.6rem;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -20,4 +26,10 @@ export const Title = styled.h2`
 export const P = styled.p`
   font-size: 0.9rem;
   padding-top: 10px;
+
+  & {
+    @media (max-width: 800px) {
+      font-size: 0.6rem;
+    }
+  }
 `;

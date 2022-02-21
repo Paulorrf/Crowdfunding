@@ -7,6 +7,26 @@ export const BookProjDiv = styled.div`
   background-color: #fff;
   border-radius: 6px;
   margin-bottom: 20px;
+
+  @media (max-width: 1000px) {
+    h2 {
+      font-size: 0.8rem;
+    }
+
+    p {
+      font-size: 0.7rem;
+    }
+  }
+
+  @media (max-width: 760px) {
+    h2 {
+      font-size: 0.7rem;
+    }
+
+    p {
+      font-size: 0.6rem;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -30,6 +50,20 @@ export const BtnBack = styled.button`
 
   :hover {
     background-color: ${({ theme: { colors } }) => colors.secondary};
+  }
+
+  @media (max-width: 900px) {
+    & {
+      width: 100px;
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 760px) {
+    & {
+      width: 86px;
+      font-size: 8px;
+    }
   }
 `;
 

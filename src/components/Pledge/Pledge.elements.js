@@ -6,7 +6,7 @@ export const Container = styled.div`
   border: 1px solid ${({ theme: { colors } }) => colors.text};
   border-radius: 10px;
   margin-top: 32px;
-  opacity: ${props => (props.isActive ? "1" : "0.5")};
+  opacity: ${(props) => (props.isActive ? "1" : "0.5")};
 `;
 
 export const ContainerInner = styled.div`
@@ -46,7 +46,7 @@ export const BtnReward = styled.button`
   //padding: 14px 20px;
   width: 140px;
   padding: 14px 0;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.outStock
       ? ({ theme: { colors } }) => colors.text
       : ({ theme: { colors } }) => colors.primary};
@@ -54,12 +54,19 @@ export const BtnReward = styled.button`
   border-radius: 20px;
   border: none;
   color: #fff;
-  cursor: ${props => (props.outStock ? "default" : "pointer")};
+  cursor: ${(props) => (props.outStock ? "default" : "pointer")};
 
   :hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.outStock
         ? ({ theme: { colors } }) => colors.text
         : ({ theme: { colors } }) => colors.primary};
+  }
+
+  & {
+    @media (max-width: 800px) {
+      width: 100px;
+      font-size: 10px;
+    }
   }
 `;

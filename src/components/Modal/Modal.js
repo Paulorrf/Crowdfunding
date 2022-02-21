@@ -12,7 +12,14 @@ import {
   InfoContainer,
 } from "./Modal.elements";
 
-const Modal = ({ showModal, setShowModal }) => {
+const Modal = ({
+  showModal,
+  setShowModal,
+  monitorsQnt,
+  setMonitorsQnt,
+  setBacked,
+  setTotalBackers,
+}) => {
   //Each value is for each ModalPledge
   const [arrIsActive, setArrIsActive] = useState([false, false, false, false]);
 
@@ -53,40 +60,56 @@ const Modal = ({ showModal, setShowModal }) => {
               idFor={"no-reward"}
               title={"Pledge with no reward"}
               pledgeAmount={0}
-              quantity={0}
               arrIsActive={arrIsActive}
               setArrIsActive={setArrIsActive}
               value={0}
+              setShowModal={setShowModal}
+              monitorsQnt={monitorsQnt}
+              setMonitorsQnt={setMonitorsQnt}
+              setBacked={setBacked}
+              setTotalBackers={setTotalBackers}
             />
             <ModalPledge
               isFree={false}
               idFor={"bamboo-stand"}
               title={"Bamboo Stand"}
               pledgeAmount={25}
-              quantity={101}
               arrIsActive={arrIsActive}
               setArrIsActive={setArrIsActive}
               value={1}
+              setShowModal={setShowModal}
+              monitorsQnt={monitorsQnt}
+              setMonitorsQnt={setMonitorsQnt}
+              setBacked={setBacked}
+              setTotalBackers={setTotalBackers}
             />
             <ModalPledge
               isFree={false}
               idFor={"black-edition"}
               title={"Black Edition Stand"}
               pledgeAmount={75}
-              quantity={64}
               arrIsActive={arrIsActive}
               setArrIsActive={setArrIsActive}
               value={2}
+              setShowModal={setShowModal}
+              monitorsQnt={monitorsQnt}
+              setMonitorsQnt={setMonitorsQnt}
+              setBacked={setBacked}
+              setTotalBackers={setTotalBackers}
             />
             <ModalPledge
               isFree={false}
               idFor={"mahogany-edition"}
               title={"Mahogany Special Edition"}
-              pledgeAmount={75}
-              quantity={0}
+              pledgeAmount={200}
               arrIsActive={arrIsActive}
               setArrIsActive={setArrIsActive}
               value={3}
+              setShowModal={setShowModal}
+              monitorsQnt={monitorsQnt}
+              setMonitorsQnt={setMonitorsQnt}
+              setBacked={setBacked}
+              setTotalBackers={setTotalBackers}
             />
           </form>
         </ModalWrapper>

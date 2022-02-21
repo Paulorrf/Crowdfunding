@@ -9,11 +9,7 @@ import {
 
 import { Pledge } from "../index";
 
-const BackersOptions = ({ setShowModal }) => {
-  const [bambooAmount, setBambooAmount] = useState(101);
-  const [blackAmount, setBlackAmount] = useState(64);
-  const [mahoganyAmount, setMahoganyAmount] = useState(0);
-
+const BackersOptions = ({ setShowModal, monitorsQnt }) => {
   let bambooText =
     "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.";
 
@@ -47,27 +43,27 @@ const BackersOptions = ({ setShowModal }) => {
           title="Bamboo Stand"
           valor="25"
           text={bambooText}
-          amountLeft={bambooAmount}
-          callbackAmount={setBambooAmount}
+          quantity={monitorsQnt}
           setShowModal={setShowModal}
+          idx={0}
         />
 
         <Pledge
-          title="Back Edition Stand"
+          title="Black Edition Stand"
           valor="75"
           text={blackText}
-          amountLeft={blackAmount}
-          callbackAmount={setBlackAmount}
+          quantity={monitorsQnt}
           setShowModal={setShowModal}
+          idx={1}
         />
 
         <Pledge
           title="Mahogany Special Edition"
           valor="200"
           text={mahoganyText}
-          amountLeft={mahoganyAmount}
-          callbackAmount={setMahoganyAmount}
+          quantity={monitorsQnt}
           setShowModal={setShowModal}
+          idx={2}
         />
       </BackersOpInnerContainer>
     </BackersOpContainer>
